@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(5);
 
-            GameObject spawnpoint = spawnpoints[Random.Range(0, spawnpoints.Count - 1)];
+            GameObject spawnpoint = spawnpoints[Random.Range(0, spawnpoints.Count)];
             GameObject obj = Instantiate(monster,spawnpoint.transform);
 
             obj.transform.parent = GameObject.FindGameObjectWithTag("SpawnPlat").transform;

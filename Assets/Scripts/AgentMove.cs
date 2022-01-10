@@ -38,13 +38,13 @@ public class AgentMove : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //print(other.transform.name);
-        if (other.CompareTag("AgentLocations") && other.transform.position == destinationPosition)
+        /*if (other.CompareTag("AgentLocations") && other.transform.position == destinationPosition)
         {
             animator.SetInteger("StayAnimation",Random.Range(1,5));
 
             StartCoroutine("StayInPlace");
 
-        }
+        }*/
     }
 
     IEnumerator StayInPlace()

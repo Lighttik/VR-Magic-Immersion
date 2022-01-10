@@ -1163,7 +1163,6 @@
             </e>
           </e>
         </e>
-        <e p="ReceiveResult.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="AgentMove.cs" t="Include" />
           <e p="CollisionController.cs" t="Include" />
@@ -1190,6 +1189,7 @@
           <e p="Spawner.cs" t="Include" />
           <e p="Switcher.cs" t="Include" />
           <e p="VoiceRecognition.cs" t="Include" />
+          <e p="WitActivation.cs" t="Include" />
         </e>
         <e p="SimpleLowPolyNature" t="Include">
           <e p="README.txt" t="Include" />
@@ -1197,7 +1197,6 @@
             <e p="SimpleWater.shader" t="Include" />
           </e>
         </e>
-        <e p="Test.cs" t="Include" />
       </e>
       <e p="AssistantCoreSDKEditor.csproj" t="IncludeRecursive" />
       <e p="AssistantCoreSDKRuntime.csproj" t="IncludeRecursive" />
