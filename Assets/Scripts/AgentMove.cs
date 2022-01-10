@@ -38,19 +38,18 @@ public class AgentMove : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //print(other.transform.name);
-        /*if (other.CompareTag("AgentLocations") && other.transform.position == destinationPosition)
+        if (other.CompareTag("PlayerPos"))
         {
             animator.SetInteger("StayAnimation",Random.Range(1,5));
-
+            agent.SetDestination(transform.position);
             StartCoroutine("StayInPlace");
 
-        }*/
+        }
     }
 
     IEnumerator StayInPlace()
     {
         yield return new WaitForSeconds(3);
-        ChooseNewDestination();
         animator.SetInteger("StayAnimation",0);
     }
 

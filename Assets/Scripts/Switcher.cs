@@ -11,16 +11,16 @@ public class Switcher : MonoBehaviour
 
     public void Switch(String keyword)
     {
-        if (keyword.Equals("fire"))
-        {   
+        if (keyword.ToLower().Contains("fire"))
+        {
             DisableAllSystems();
             fireParticleSystem.SetActive(true);
 
-        } else if (keyword.Equals("water"))
+        } else if (keyword.ToLower().Contains("water"))
         {
             DisableAllSystems();
             waterParticleSystem.SetActive(true);
-        } else if (keyword.Equals("smoke"))
+        } else if (keyword.ToLower().Contains("smoke"))
         {
             DisableAllSystems();
             smokeParticleSystem.SetActive(true);
