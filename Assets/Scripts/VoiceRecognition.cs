@@ -23,20 +23,26 @@ public class VoiceRecognition : MonoBehaviour
     
     private void OnEnable()
     {
-        voiceExperience.events.OnRequestCreated.AddListener(OnRequestStarted);
+        voiceExperience.events.OnFullTranscription.AddListener(OnFullTranscription);
     }
 
     private void OnDisable()
     {
-        voiceExperience.events.OnRequestCreated.RemoveListener(OnRequestStarted);
+        voiceExperience.events.OnFullTranscription.RemoveListener(OnFullTranscription);
     }
 
-    private void OnRequestStarted(WitRequest r)
+    private void OnFullTranscription(string transcript)
     {
-        
+        if (!string.IsNullOrEmpty(transcript))
+        {
+            Debug.Log(transcript);
+            text.text = transcript;
+
+            //switcher.Switch(text);
+        }
     }
-    
-    
+
+
     public void OnResponse(WitResponseNode response)
     {
         if (!string.IsNullOrEmpty(response["text"]))
