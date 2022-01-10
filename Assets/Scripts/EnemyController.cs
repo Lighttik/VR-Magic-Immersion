@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawner = GameObject.Find("SpawnPlatform").GetComponent<Spawner>();
+        spawner = GameObject.Find("SpawnPoints").GetComponent<Spawner>();
         animator = gameObject.GetComponent<Animator>();
         
         state = (State) Random.Range(0, 3);
@@ -72,7 +72,7 @@ public class EnemyController : MonoBehaviour
     void Die()
     {
         animator.SetBool("Alive",false);
-        spawner.monsters.Remove(gameObject);
+        //spawner.monsters.Remove(gameObject);
         Destroy(gameObject, 2f);
     }
 

@@ -4,28 +4,20 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject enemy;
+    public GameObject monster;
 
     private MonsterCounter monsterCounter;
 
-    public GameObject topLeft;
-    public GameObject bottomRight;
+    private List<GameObject> monsters;
 
-    private Vector3 posTop;
-    private Vector3 posBottom;
-    
-    public List<GameObject> monsters;
+    private List<GameObject> spawnpoints;
     
     // Start is called before the first frame update
     void Start()
     {
-        monsterCounter = GameObject.FindWithTag("GUI").GetComponent<MonsterCounter>();
-        
-        posTop = topLeft.transform.localPosition;
-        posBottom = bottomRight.transform.localPosition;
-        
-        print(posTop);
-        print(posBottom);
+        monsters = new List<GameObject>();
+        spawnpoints = new List<GameObject>();
+        spawnpoints.AddRange(GameObject.FindGameObjectsWithTag("SpawnPoint"));
         StartCoroutine("Spawn");
     }
 
@@ -34,24 +26,18 @@ public class Spawner : MonoBehaviour
         for (;;)
         {
             yield return new WaitForSeconds(5);
-            GameObject obj = Instantiate(enemy,transform);
+
+            GameObject spawnpoint = spawnpoints[Random.Range(0, spawnpoints.Count - 1)];
+            GameObject obj = Instantiate(monster,spawnpoint.transform);
+
+            obj.transform.parent = GameObject.FindGameObjectWithTag("SpawnPlat").transform;
+            
+            print("spawned");
             
             monsters.Add(obj);
-            
-            var x = Random.Range(posTop.x, posBottom.x);
-            var z = Random.Range(posBottom.z, posTop.z);
-        
-            Vector3 newPos = new Vector3(x,0,z);
-            obj.transform.localPosition = newPos;
 
-            //float scaleYZ = obj.transform.localScale.y;
-            //obj.transform.localScale = new Vector3(0.4915436f,scaleYZ,scaleYZ);
-            //obj.transform.localScale = new Vector3(scaleYZ,scaleYZ,scaleYZ);
-
-            print(obj.transform.position);
-            
             //notify GUI of new monster
-            monsterCounter.AddNewMonster();
+            //monsterCounter.AddNewMonster();
 
             yield return new WaitForSeconds(10);
         }

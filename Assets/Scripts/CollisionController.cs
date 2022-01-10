@@ -16,7 +16,7 @@ public class CollisionController : MonoBehaviour
     void Start()
     {
         ps = GetComponent<ParticleSystem>();
-        spawner = GameObject.Find("SpawnPlatform").GetComponent<Spawner>();
+        //spawner = GameObject.Find("SpawnPlatform").GetComponent<Spawner>();
         
         cam = Camera.main;
     }
@@ -26,7 +26,7 @@ public class CollisionController : MonoBehaviour
         var m_particles = new ParticleSystem.Particle[ps.main.maxParticles];
         int alive = ps.GetParticles(m_particles);
 
-        monsters = spawner.monsters;
+        //monsters = spawner.monsters;
         
         for (int i = 0; i < alive; i++)
         {

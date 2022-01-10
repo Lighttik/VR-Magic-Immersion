@@ -33,7 +33,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/PlayerMagicController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CollisionController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/VoiceRecognition.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AgentMove.cs" />
       </list>
     </option>
   </component>

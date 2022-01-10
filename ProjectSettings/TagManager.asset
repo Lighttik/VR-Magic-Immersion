@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - ParticleSwitcher
+  - SpawnPoint
+  - PlayerPos
+  - SpawnPlat
   layers:
   - Default
   - TransparentFX
