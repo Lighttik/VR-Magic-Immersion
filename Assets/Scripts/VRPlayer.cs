@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class VRPlayer : MonoBehaviour
 {
-    public int health;
-    // Start is called before the first frame update
+    private int currentHealth;
+    
+    public int maxHealth;
+    public int monsterDamage;
+    public HealthBar healthBar; 
+
     void Start()
     {
-        health = 100;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(currentHealth);
     }
 
     public void TakeDamage()
     {
-        health = health > 0 ? health - 5 : 0;
+        currentHealth = currentHealth > 0 ? currentHealth - monsterDamage : 0;
+        healthBar.SetHealth(currentHealth);
+        
     }
 
     public bool IsDead()
     {
-        return health == 0;
+        return currentHealth == 0;
     }
 }
