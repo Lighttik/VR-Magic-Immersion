@@ -16,15 +16,16 @@ public class AgentMove : MonoBehaviour
     private GameObject playerpos;
     private LineRenderer _lineRenderer;
 
+    private EnemyController behaviourController;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
-        
-        //destinations = new List<GameObject>(GameObject.FindGameObjectsWithTag("AgentLocations"));
         agent = gameObject.GetComponent<NavMeshAgent>();
         
         playerpos = GameObject.FindGameObjectWithTag("PlayerPos");
+        behaviourController = GetComponent<EnemyController>();
 
         _lineRenderer = GetComponent<LineRenderer>();
 
@@ -37,30 +38,29 @@ public class AgentMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //print(other.transform.name);
         if (other.CompareTag("PlayerPos"))
         {
-            animator.SetInteger("StayAnimation",Random.Range(1,5));
+            animator.SetInteger("StayAnimation",Random.Range(1,3));
             agent.SetDestination(transform.position);
             StartCoroutine("StayInPlace");
-
         }
     }
 
     IEnumerator StayInPlace()
     {
-        yield return new WaitForSeconds(3);
-        animator.SetInteger("StayAnimation",0);
+        for (;;)
+        {
+            animator.SetInteger("StayAnimation",Random.Range(1,3));
+            yield return new WaitForSeconds(3);
+            animator.SetInteger("StayAnimation",0);
+            behaviourController.AttackPlayer();
+            yield return new WaitForSeconds(5);
+        }
     }
 
     void ChooseNewDestination()
     {
-        //destinationIndex = (destinationIndex +  Random.Range(1, destinations.Count-1) ) % destinations.Count;
-        //destinationPosition = destinations[destinationIndex].transform.position;
-        
         agent.SetDestination(playerpos.transform.position);
-        
-        print(agent.pathStatus);
     }
 
     private void Update()

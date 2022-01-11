@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     private Spawner spawner;
 
     private Animator animator;
+    private VRPlayer player;
     public enum State
     {
         WATER,
@@ -25,6 +26,7 @@ public class EnemyController : MonoBehaviour
     {
         spawner = GameObject.Find("SpawnPoints").GetComponent<Spawner>();
         animator = gameObject.GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("PlayerPos").GetComponent<VRPlayer>();
         
         state = (State) Random.Range(0, 3);
         lives = Random.Range(2, 5);
@@ -71,15 +73,33 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
+        StopAnimations();
         animator.SetBool("Alive",false);
-        //spawner.monsters.Remove(gameObject);
         Destroy(gameObject, 2f);
     }
 
     void ChangeLayer()
     {
-        if (state == State.FIRE) gameObject.layer = 12;
-        if (state == State.WATER) gameObject.layer = 13;
-        if (state == State.SMOKE) gameObject.layer = 14;
+        if (state == State.FIRE) gameObject.layer = 7;
+        if (state == State.WATER) gameObject.layer = 6;
+        if (state == State.SMOKE) gameObject.layer = 8;
+    }
+
+    public void AttackPlayer()
+    {
+        player.TakeDamage();
+        if (player.IsDead()) CelebrateWin();
+    }
+
+    void CelebrateWin()
+    {
+        StopAnimations();
+        animator.SetInteger("StayAnimation",Random.Range(3,5));
+    }
+
+    void StopAnimations()
+    {
+        GetComponent<AgentMove>().StopCoroutine("StayInPlace");
+        animator.SetInteger("StayAnimation",0);
     }
 }

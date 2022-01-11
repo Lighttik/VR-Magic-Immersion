@@ -21,6 +21,11 @@ public class WitActivation : MonoBehaviour
             Debug.Log("*** Pressed Space bar ***");
             ActivateWit();
         }
+
+        if (!_voiceExperience.Active)
+        {
+            ActivateWit();
+        }
     }
 
     /// <summary>

@@ -1189,6 +1189,7 @@
           <e p="Spawner.cs" t="Include" />
           <e p="Switcher.cs" t="Include" />
           <e p="VoiceRecognition.cs" t="Include" />
+          <e p="VRPlayer.cs" t="Include" />
           <e p="WitActivation.cs" t="Include" />
         </e>
         <e p="SimpleLowPolyNature" t="Include">
