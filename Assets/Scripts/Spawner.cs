@@ -6,6 +6,8 @@ public class Spawner : MonoBehaviour
 {
     public GameObject monster;
 
+    public int MonstersToSpawnCount;
+
     private MonsterCounter monsterCounter;
 
     private List<GameObject> monsters;
@@ -23,7 +25,7 @@ public class Spawner : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        for (;;)
+        for (int i = 0; i < MonstersToSpawnCount; i++)
         {
             yield return new WaitForSeconds(5);
 

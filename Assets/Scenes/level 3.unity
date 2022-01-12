@@ -1531,6 +1531,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b26300ddb869c614d8367fe361d8f395, type: 3}
+--- !u!114 &237757083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4835942718571372822, guid: b26300ddb869c614d8367fe361d8f395,
+    type: 3}
+  m_PrefabInstance: {fileID: 237757082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7098208ed2d994aa205842a827d01e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &237757084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4835942718709111832, guid: b26300ddb869c614d8367fe361d8f395,
+    type: 3}
+  m_PrefabInstance: {fileID: 237757082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7098208ed2d994aa205842a827d01e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &246362272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7937,6 +7961,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 279554649532963559, guid: 778d25b541f51d64fb410210650e1e4f,
+        type: 3}
+      propertyPath: events.OnPartialTranscription.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 237757084}
+    - target: {fileID: 279554649532963559, guid: 778d25b541f51d64fb410210650e1e4f,
+        type: 3}
+      propertyPath: events.OnPartialTranscription.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 237757083}
+    - target: {fileID: 279554649532963559, guid: 778d25b541f51d64fb410210650e1e4f,
+        type: 3}
+      propertyPath: events.OnPartialTranscription.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Switch
+      objectReference: {fileID: 0}
+    - target: {fileID: 279554649532963559, guid: 778d25b541f51d64fb410210650e1e4f,
+        type: 3}
+      propertyPath: events.OnPartialTranscription.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Switch
       objectReference: {fileID: 0}
     - target: {fileID: 279554649532963561, guid: 778d25b541f51d64fb410210650e1e4f,
         type: 3}
