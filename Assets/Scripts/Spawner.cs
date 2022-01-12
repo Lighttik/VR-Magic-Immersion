@@ -20,7 +20,6 @@ public class Spawner : MonoBehaviour
         monsters = new List<GameObject>();
         spawnpoints = new List<GameObject>();
         spawnpoints.AddRange(GameObject.FindGameObjectsWithTag("SpawnPoint"));
-        StartCoroutine("Spawn");
     }
 
     IEnumerator Spawn()
