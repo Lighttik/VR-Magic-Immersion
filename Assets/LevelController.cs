@@ -13,6 +13,8 @@ public class LevelController : MonoBehaviour
 
     private GameObject player;
 
+    public GameObject canvas;
+
     private int SceneNumber;
     void Start()
     {
@@ -47,10 +49,17 @@ public class LevelController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneNumber, LoadSceneMode.Single);
 
+        if (SceneNumber == 1) ActivateHealth();
+
         if (SceneManager.GetActiveScene().buildIndex != SceneNumber)
         {
             StartCoroutine(waitForSceneLoad(SceneNumber));
         }
+    }
+
+    void ActivateHealth()
+    {
+        canvas.SetActive(true);
     }
     
     IEnumerator waitForSceneLoad(int sceneNumber)
