@@ -110,6 +110,7 @@
             </e>
           </e>
         </e>
+        <e p="LevelController.cs" t="Include" />
         <e p="Oculus" t="Include">
           <e p="AudioManager" t="Include">
             <e p="Oculus.AudioManager.asmdef" t="Include" />
