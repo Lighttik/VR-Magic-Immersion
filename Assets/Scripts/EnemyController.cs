@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
     private Animator animator;
     private VRPlayer player;
+    private AgentMove agentMoveScript;
     public enum State
     {
         WATER,
@@ -27,6 +28,7 @@ public class EnemyController : MonoBehaviour
         spawner = GameObject.Find("SpawnPoints").GetComponent<Spawner>();
         animator = gameObject.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("PlayerPos").GetComponent<VRPlayer>();
+        agentMoveScript = gameObject.GetComponent<AgentMove>();
         
         state = (State) Random.Range(0, 3);
         lives = Random.Range(2, 5);
@@ -75,7 +77,7 @@ public class EnemyController : MonoBehaviour
     {
         StopAnimations();
         animator.SetBool("Alive",false);
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 4f);
     }
 
     void ChangeLayer()
@@ -91,15 +93,15 @@ public class EnemyController : MonoBehaviour
         if (player.IsDead()) CelebrateWin();
     }
 
-    void CelebrateWin()
+    public void CelebrateWin()
     {
         StopAnimations();
-        animator.SetInteger("StayAnimation",Random.Range(3,5));
+        animator.SetBool("Win",true);
     }
 
     void StopAnimations()
     {
-        GetComponent<AgentMove>().StopCoroutine("StayInPlace");
+        agentMoveScript.StopCoroutine("StayInPlace");
         animator.SetInteger("StayAnimation",0);
     }
 }

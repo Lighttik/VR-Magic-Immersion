@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class AgentMove : MonoBehaviour
 {
+    private VRPlayer player;
     private List<GameObject> destinations;
     private NavMeshAgent agent;
     private Vector3 destinationPosition;
@@ -25,6 +26,7 @@ public class AgentMove : MonoBehaviour
         agent = gameObject.GetComponent<NavMeshAgent>();
         
         playerpos = GameObject.FindGameObjectWithTag("PlayerPos");
+        player = playerpos.GetComponent<VRPlayer>();
         behaviourController = GetComponent<EnemyController>();
 
         _lineRenderer = GetComponent<LineRenderer>();
@@ -38,10 +40,15 @@ public class AgentMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerPos"))
+        agent.SetDestination(transform.position);
+        
+        if (player.IsDead())
+        {
+            behaviourController.CelebrateWin();
+        }
+        else if (other.CompareTag("PlayerPos"))
         {
             animator.SetInteger("StayAnimation",Random.Range(1,3));
-            agent.SetDestination(transform.position);
             StartCoroutine("StayInPlace");
         }
     }
@@ -54,6 +61,7 @@ public class AgentMove : MonoBehaviour
             yield return new WaitForSeconds(3);
             animator.SetInteger("StayAnimation",0);
             behaviourController.AttackPlayer();
+            print("attaaaack");
             yield return new WaitForSeconds(5);
         }
     }

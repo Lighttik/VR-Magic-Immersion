@@ -1167,6 +1167,7 @@
           <e p="AgentMove.cs" t="Include" />
           <e p="CollisionController.cs" t="Include" />
           <e p="EnemyController.cs" t="Include" />
+          <e p="HealthBar.cs" t="Include" />
           <e p="MonsterCounter.cs" t="Include" />
           <e p="NavMesh" t="Include">
             <e p="NavMeshComponents" t="Include">
