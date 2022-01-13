@@ -3790,7 +3790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1620694043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4451,6 +4451,11 @@ PrefabInstance:
       propertyPath: lostUI
       value: 
       objectReference: {fileID: 742474207}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
+      propertyPath: scoreUI
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
       propertyPath: lastLossUI

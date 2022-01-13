@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class LevelController : MonoBehaviour
     public GameObject staticCanvas;
     public List<GameObject> staticCanvasChildren;
     public GameObject totalWinUI;
+    public Text scoreUI;
     
     private int SceneNumber;
     private bool restart;
@@ -49,7 +51,7 @@ public class LevelController : MonoBehaviour
 
     bool HasPlayerWon()
     {
-        return playerScript.monstersKilledInCurrentLevel() == MonstersCountByLevel[SceneNumber - 1];
+        return playerScript.MonstersKilledInCurrentLevel() == MonstersCountByLevel[SceneNumber - 1];
     }
 
     // Update is called once per frame
@@ -123,12 +125,33 @@ public class LevelController : MonoBehaviour
         SceneManager.LoadScene(sceneNames[SceneNumber], LoadSceneMode.Single);
 
         if (SceneNumber == 1) healthCanvas.SetActive(true);
-        if (SceneNumber == 5) healthCanvas.SetActive(false);
+        if (SceneNumber == 5)
+        {
+            PrepareScoreScene();
+        }
 
         if (SceneManager.GetActiveScene().name != sceneNames[SceneNumber])
         {
             StartCoroutine(waitForSceneLoad(SceneNumber));
         }
+    }
+
+    private void PrepareScoreScene()
+    {
+        healthCanvas.SetActive(false);
+        int userScore = ComputeUserScore();
+        
+        totalWinUI.SetActive(true);
+        scoreUI.text = userScore.ToString();
+
+    }
+
+    private int ComputeUserScore()
+    {
+        int healthAtLevel4 = playerScript.GetHealthAtLevel(4);
+        int totalMonstersKilled = playerScript.TotalMonstersKilled();
+
+        return healthAtLevel4 * totalMonstersKilled;
     }
     
     

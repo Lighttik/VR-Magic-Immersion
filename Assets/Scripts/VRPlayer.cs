@@ -8,7 +8,8 @@ public class VRPlayer : MonoBehaviour
     private int currentHealth;
     private int killedMonstersCount;
     private int totalKilledMonstersCount;
-    
+    private List<int> healthAtEachLevel;
+
     public int maxHealth;
     public int monsterDamage;
     public HealthBar healthBar;
@@ -79,12 +80,14 @@ public class VRPlayer : MonoBehaviour
         healthBar.SetMaxHealth(currentHealth);
         killedMonstersCount = 0;
         totalKilledMonstersCount = 0;
+        healthAtEachLevel.Clear();
     }
 
     public void NextLevel()
     {
         totalKilledMonstersCount += killedMonstersCount;
         killedMonstersCount = 0;
+        healthAtEachLevel.Add(currentHealth);
     }
 
     public void TakeDamage()
@@ -99,18 +102,28 @@ public class VRPlayer : MonoBehaviour
         return currentHealth <= 0;
     }
 
-    public int monstersKilledInCurrentLevel()
+    public int MonstersKilledInCurrentLevel()
     {
         return killedMonstersCount;
     }
 
-    public int totalMonstersKilled()
+    public int TotalMonstersKilled()
     {
         return totalKilledMonstersCount;
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
     }
 
     public void KilledMonster()
     {
         killedMonstersCount++;
+    }
+
+    public int GetHealthAtLevel(int level)
+    {
+        return healthAtEachLevel[level];
     }
 }
