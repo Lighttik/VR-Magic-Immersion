@@ -20,6 +20,7 @@ public class VRPlayer : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(currentHealth);
+        killedMonstersCount = 0;
     }
 
     public void TakeDamage()

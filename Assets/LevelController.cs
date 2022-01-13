@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class LevelController : MonoBehaviour
 {
@@ -12,13 +13,18 @@ public class LevelController : MonoBehaviour
     private Spawner spawner;
     public List<int> MonstersCountByLevel;
     public List<int> MonstersLivesByLevel;
+    public List<string> sceneNames;
 
     private GameObject player;
     private VRPlayer playerScript;
 
-    public GameObject canvas;
+    public GameObject healthCanvas;
     public GameObject winUI;
     public GameObject lostUI;
+    public GameObject lastLossUI;
+    public GameObject staticCanvas;
+    public List<GameObject> staticCanvasChildren;
+    public GameObject totalWinUI;
     
     private int SceneNumber;
     void Start()
@@ -30,6 +36,7 @@ public class LevelController : MonoBehaviour
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(GameObject.Find("UIHelpers"));
         DontDestroyOnLoad(GameObject.Find("App Voice Experience"));
+        DontDestroyOnLoad(GameObject.Find("StaticCanvas"));
         
         
 
@@ -46,7 +53,7 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneNumber > 0)
+        if (SceneNumber > 0 && SceneNumber < 4)
         {
             if (playerScript.IsDead())
             {
@@ -60,6 +67,11 @@ public class LevelController : MonoBehaviour
                 winUI.SetActive(true);
             }
         }
+
+        if (SceneNumber == 4 && playerScript.IsDead()) 
+        {
+            lastLossUI.SetActive(true);
+        }
         
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -72,12 +84,20 @@ public class LevelController : MonoBehaviour
         SceneNumber = 1;
         playerScript.Restart();
         DisableUI();
-        SceneManager.LoadScene(1,LoadSceneMode.Single);
+        SceneManager.LoadScene(sceneNames[SceneNumber],LoadSceneMode.Single);
         
     }
 
     private void DisableUI()
     {
+        staticCanvas.SetActive(false);
+        foreach (GameObject go in staticCanvasChildren)
+        {
+            go.SetActive(false);
+        }
+        totalWinUI.SetActive(false);
+        
+        lastLossUI.SetActive(false);
         lostUI.SetActive(false);
         winUI.SetActive(false);
     }
@@ -90,38 +110,46 @@ public class LevelController : MonoBehaviour
     public void NextLevel()
     {
         SceneNumber++;
-        SceneManager.LoadScene(SceneNumber, LoadSceneMode.Single);
+        DisableUI();
+        SceneManager.LoadScene(sceneNames[SceneNumber], LoadSceneMode.Single);
 
-        if (SceneNumber == 1) ActivateHealth();
+        if (SceneNumber == 1) healthCanvas.SetActive(true);
+        if (SceneNumber == 5) healthCanvas.SetActive(false);
 
-        if (SceneManager.GetActiveScene().buildIndex != SceneNumber)
+        if (SceneManager.GetActiveScene().name != sceneNames[SceneNumber])
         {
             StartCoroutine(waitForSceneLoad(SceneNumber));
         }
     }
-
-    void ActivateHealth()
-    {
-        canvas.SetActive(true);
-    }
+    
     
     IEnumerator waitForSceneLoad(int sceneNumber)
     {
-        while (SceneManager.GetActiveScene().buildIndex != sceneNumber)
+        while (SceneManager.GetActiveScene().name != sceneNames[SceneNumber])
         {
             yield return null;
         }
  
         // Do anything after proper scene has been loaded
-        if (SceneManager.GetActiveScene().buildIndex == sceneNumber)
+        if (SceneManager.GetActiveScene().name == sceneNames[SceneNumber])
         {
             Debug.Log("Finished loading");
+
+            if (sceneNumber < 5)
+            {
+               // setup spawner properties
+               spawner = GameObject.Find("SpawnPoints").GetComponent<Spawner>();
+               spawner.MonstersToSpawnCount = MonstersCountByLevel[sceneNumber-1];
+               spawner.MonstersLives = MonstersLivesByLevel[sceneNumber - 1];
+               spawner.StartCoroutine("Spawn"); 
+            }
+            else
+            {
+                staticCanvas.SetActive(true);
+                totalWinUI.SetActive(true);
+            }
             
-            // setup spawner properties
-            spawner = GameObject.Find("SpawnPoints").GetComponent<Spawner>();
-            spawner.MonstersToSpawnCount = MonstersCountByLevel[sceneNumber-1];
-            spawner.MonstersLives = MonstersLivesByLevel[sceneNumber - 1];
-            spawner.StartCoroutine("Spawn");
+            
             
             
             // set player to desired position
