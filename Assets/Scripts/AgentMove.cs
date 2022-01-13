@@ -9,7 +9,7 @@ public class AgentMove : MonoBehaviour
 {
     private VRPlayer player;
     private List<GameObject> destinations;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private Vector3 destinationPosition;
     private int destinationIndex;
 
@@ -58,10 +58,11 @@ public class AgentMove : MonoBehaviour
         for (;;)
         {
             animator.SetInteger("StayAnimation",Random.Range(1,3));
-            yield return new WaitForSeconds(3);
-            animator.SetInteger("StayAnimation",0);
+            yield return new WaitForSeconds(1);
             behaviourController.AttackPlayer();
             print("attaaaack");
+            yield return new WaitForSeconds(2);
+            animator.SetInteger("StayAnimation",0);
             yield return new WaitForSeconds(5);
         }
     }

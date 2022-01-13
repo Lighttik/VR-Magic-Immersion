@@ -17,6 +17,7 @@
             </e>
           </e>
         </e>
+        <e p="IconSwitcher.cs" t="Include" />
         <e p="IntroController.cs" t="Include" />
         <e p="LevelController.cs" t="Include" />
         <e p="Nature" t="Include">

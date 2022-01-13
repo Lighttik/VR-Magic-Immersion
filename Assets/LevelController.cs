@@ -30,7 +30,9 @@ public class LevelController : MonoBehaviour
     
     private int SceneNumber;
     private bool restart;
-    
+
+    private bool UiShown;
+
     void Start()
     {
         player = GameObject.Find("OVRPlayerController Variant");
@@ -41,8 +43,8 @@ public class LevelController : MonoBehaviour
         DontDestroyOnLoad(GameObject.Find("UIHelpers"));
         DontDestroyOnLoad(GameObject.Find("App Voice Experience"));
         DontDestroyOnLoad(GameObject.Find("StaticCanvas"));
-        
-        
+
+        UiShown = false;
 
         SceneNumber = 0;
 
@@ -59,16 +61,21 @@ public class LevelController : MonoBehaviour
     {
         if (SceneNumber > 0 && SceneNumber < 4)
         {
-            if (playerScript.IsDead())
+            if (!UiShown)
             {
-                Debug.Log("player dead");
-                lostUI.SetActive(true);
-            }
+                if (playerScript.IsDead())
+                {
+                    Debug.Log("player dead");
+                    StartCoroutine("ShowUI", lostUI);
+                    UiShown = !UiShown;
+                }
 
-            else if (HasPlayerWon())
-            {
-                Debug.Log("player win");
-                winUI.SetActive(true);
+                else if (HasPlayerWon())
+                {
+                    Debug.Log("player win");
+                    StartCoroutine("ShowUI", winUI);
+                    UiShown = !UiShown;
+                }
             }
         }
 
@@ -85,6 +92,12 @@ public class LevelController : MonoBehaviour
         {
             RestartGame();
         }
+    }
+
+    IEnumerator ShowUI(GameObject ui)
+    {
+        yield return new WaitForSeconds(2);
+        ui.SetActive(true);
     }
 
     public void RestartGame()
@@ -134,6 +147,7 @@ public class LevelController : MonoBehaviour
         {
             StartCoroutine(waitForSceneLoad(SceneNumber));
         }
+        UiShown = false;
     }
 
     private void PrepareScoreScene()
@@ -178,6 +192,8 @@ public class LevelController : MonoBehaviour
                
                print("Setting spawner " + spawner.MonstersToSpawnCount + " " + spawner.MonstersLives);
                spawner.StartCoroutine("Spawn"); 
+               print("Disabling UI");
+               DisableUI();
             }
             else
             {

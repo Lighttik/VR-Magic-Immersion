@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class VRPlayer : MonoBehaviour
 {
-    private int currentHealth;
+    public int currentHealth;
     private int killedMonstersCount;
     private int totalKilledMonstersCount;
     private List<int> healthAtEachLevel = new List<int>();

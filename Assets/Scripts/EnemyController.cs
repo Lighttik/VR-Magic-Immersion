@@ -66,7 +66,6 @@ public class EnemyController : MonoBehaviour
         lives -= 1;
         if (lives < 1)
         {
-            deadSound.PlayDelayed(2);
             Die();
         }
         else
@@ -82,6 +81,9 @@ public class EnemyController : MonoBehaviour
         player.KilledMonster();
         StopAnimations();
         animator.SetBool("Alive",false);
+        agentMoveScript.agent.SetDestination(agentMoveScript.gameObject.transform.position);
+        agentMoveScript.StopCoroutine("StayInPlace");
+        deadSound.PlayDelayed(1f);
         Destroy(gameObject, 4f);
     }
 
