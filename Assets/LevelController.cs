@@ -63,7 +63,7 @@ public class LevelController : MonoBehaviour
                 lostUI.SetActive(true);
             }
 
-            if (HasPlayerWon())
+            else if (HasPlayerWon())
             {
                 Debug.Log("player win");
                 winUI.SetActive(true);

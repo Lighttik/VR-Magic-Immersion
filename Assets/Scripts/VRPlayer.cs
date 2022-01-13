@@ -33,6 +33,24 @@ public class VRPlayer : MonoBehaviour
         //Trigger Up
         if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger)) StopLeft();
         if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger)) StopRight();
+        
+        // for debugging
+        if (OVRInput.Get(OVRInput.Button.Three))
+        {
+            left.Switch("smoke");
+            right.Switch("smoke");
+        }
+        else if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
+        {
+            left.Switch("fire");
+            right.Switch("fire");
+        }
+        else if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
+        {
+            left.Switch("water");
+            right.Switch("water");
+        }
+        
     }
 
     void FireLeft()
