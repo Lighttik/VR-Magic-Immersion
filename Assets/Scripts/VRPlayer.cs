@@ -5,6 +5,7 @@ using UnityEngine;
 public class VRPlayer : MonoBehaviour
 {
     private int currentHealth;
+    private int killedMonstersCount;
     
     public int maxHealth;
     public int monsterDamage;
@@ -30,6 +31,16 @@ public class VRPlayer : MonoBehaviour
 
     public bool IsDead()
     {
-        return currentHealth == 0;
+        return currentHealth <= 0;
+    }
+
+    public int monstersKilled()
+    {
+        return killedMonstersCount;
+    }
+
+    public void KilledMonster()
+    {
+        killedMonstersCount++;
     }
 }

@@ -31,6 +31,8 @@ public class Spawner : MonoBehaviour
 
             GameObject spawnpoint = spawnpoints[Random.Range(0, spawnpoints.Count)];
             GameObject obj = Instantiate(monster,spawnpoint.transform);
+            obj.GetComponent<EnemyController>().lives = MonstersLives;
+            
 
             obj.transform.parent = GameObject.FindGameObjectWithTag("SpawnPlat").transform;
             

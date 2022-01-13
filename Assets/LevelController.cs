@@ -14,13 +14,17 @@ public class LevelController : MonoBehaviour
     public List<int> MonstersLivesByLevel;
 
     private GameObject player;
+    private VRPlayer playerScript;
 
     public GameObject canvas;
-
+    public GameObject winUI;
+    public GameObject lostUI;
+    
     private int SceneNumber;
     void Start()
     {
         player = GameObject.Find("OVRPlayerController Variant");
+        playerScript = player.GetComponentInChildren<VRPlayer>();
         
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(player);
@@ -28,14 +32,34 @@ public class LevelController : MonoBehaviour
         
         
 
-        SceneNumber = 1;
+        SceneNumber = 0;
 
         //NextLevel();
+    }
+
+    bool HasPlayerWon()
+    {
+        return playerScript.monstersKilled() == MonstersCountByLevel[SceneNumber - 1];
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (SceneNumber > 0)
+        {
+            if (playerScript.IsDead())
+            {
+                Debug.Log("player dead");
+                lostUI.SetActive(true);
+            }
+
+            if (HasPlayerWon())
+            {
+                Debug.Log("player win");
+                winUI.SetActive(true);
+            }
+        }
+        
         if (Input.GetKeyDown(KeyCode.F))
         {
             NextLevel();
@@ -45,9 +69,16 @@ public class LevelController : MonoBehaviour
     public void RestartGame()
     {
         SceneNumber = 1;
-        player.GetComponent<VRPlayer>().Restart();
-        SceneManager.LoadScene(SceneNumber,LoadSceneMode.Single);
+        playerScript.Restart();
+        DisableUI();
+        SceneManager.LoadScene(1,LoadSceneMode.Single);
         
+    }
+
+    private void DisableUI()
+    {
+        lostUI.SetActive(false);
+        winUI.SetActive(false);
     }
 
     public void Quit()
@@ -57,6 +88,7 @@ public class LevelController : MonoBehaviour
 
     public void NextLevel()
     {
+        SceneNumber++;
         SceneManager.LoadScene(SceneNumber, LoadSceneMode.Single);
 
         if (SceneNumber == 1) ActivateHealth();
@@ -94,7 +126,6 @@ public class LevelController : MonoBehaviour
             // set player to desired position
             player.transform.position = GameObject.Find("PlayerPos").transform.position;
             
-            SceneNumber++;
         }
     }
 }

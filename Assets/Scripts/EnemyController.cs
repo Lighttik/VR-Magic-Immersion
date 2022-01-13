@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     public Material water;
     public Material smoke;
     
-    private int lives;
+    public int lives;
 
     private Spawner spawner;
 
@@ -31,7 +31,6 @@ public class EnemyController : MonoBehaviour
         agentMoveScript = gameObject.GetComponent<AgentMove>();
         
         state = (State) Random.Range(0, 3);
-        lives = Random.Range(2, 5);
         SetUpEnemy();
         
         print("BEHOLDER POS " + transform.position + " " + Camera.main.WorldToScreenPoint(transform.position));
@@ -75,6 +74,7 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
+        player.KilledMonster();
         StopAnimations();
         animator.SetBool("Alive",false);
         Destroy(gameObject, 4f);

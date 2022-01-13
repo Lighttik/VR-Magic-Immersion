@@ -73,7 +73,13 @@ public class AgentMove : MonoBehaviour
 
     private void Update()
     {
-        if (agent.hasPath)
+        if (player.IsDead())
+        {
+            agent.SetDestination(transform.position);
+            behaviourController.CelebrateWin();
+        }
+        
+        else if (agent.hasPath)
         {
             DrawPath();
         }
