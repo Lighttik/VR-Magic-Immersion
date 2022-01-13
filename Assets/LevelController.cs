@@ -186,8 +186,6 @@ public class LevelController : MonoBehaviour
             }
             
             
-            
-            
             // set player to desired position
             player.transform.position = GameObject.Find("PlayerPos").transform.position;
             

@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
     public Material fire;
     public Material water;
     public Material smoke;
+    public AudioSource deadSound;
+    public AudioSource hurtSound;
     
     public int lives;
 
@@ -64,19 +66,19 @@ public class EnemyController : MonoBehaviour
         lives -= 1;
         if (lives < 1)
         {
+            deadSound.PlayDelayed(2);
             Die();
         }
         else
         {
+            hurtSound.Play(0);
             SetUpEnemy();
         }
     }
 
     void Die()
     {
-        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
-        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
-        
+
         player.KilledMonster();
         StopAnimations();
         animator.SetBool("Alive",false);
@@ -92,6 +94,8 @@ public class EnemyController : MonoBehaviour
 
     public void AttackPlayer()
     {
+        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
         player.TakeDamage();
         if (player.IsDead()) CelebrateWin();
     }
