@@ -1593,6 +1593,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4835942717672729489, guid: b26300ddb869c614d8367fe361d8f395,
+        type: 3}
+      propertyPath: iconSwitcher
+      value: 
+      objectReference: {fileID: 1004674669}
     - target: {fileID: 4835942718795357624, guid: b26300ddb869c614d8367fe361d8f395,
         type: 3}
       propertyPath: m_IsActive

@@ -16,6 +16,7 @@ public class VRPlayer : MonoBehaviour
 
     public Switcher left;
     public Switcher right;
+    public IconSwitcher iconSwitcher;
 
     void Start()
     {
@@ -40,16 +41,19 @@ public class VRPlayer : MonoBehaviour
         {
             left.Switch("smoke");
             right.Switch("smoke");
+            iconSwitcher.Switch("smoke");
         }
         else if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
         {
             left.Switch("fire");
             right.Switch("fire");
+            iconSwitcher.Switch("fire");
         }
         else if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
             left.Switch("water");
             right.Switch("water");
+            iconSwitcher.Switch("water");
         }
         
     }
