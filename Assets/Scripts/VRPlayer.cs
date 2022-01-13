@@ -8,7 +8,7 @@ public class VRPlayer : MonoBehaviour
     private int currentHealth;
     private int killedMonstersCount;
     private int totalKilledMonstersCount;
-    private List<int> healthAtEachLevel;
+    private List<int> healthAtEachLevel = new List<int>();
 
     public int maxHealth;
     public int monsterDamage;
