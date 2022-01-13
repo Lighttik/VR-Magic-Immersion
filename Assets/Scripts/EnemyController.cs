@@ -74,6 +74,9 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
+        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
+        
         player.KilledMonster();
         StopAnimations();
         animator.SetBool("Alive",false);
