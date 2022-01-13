@@ -29,6 +29,7 @@ public class LevelController : MonoBehaviour
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(GameObject.Find("UIHelpers"));
+        DontDestroyOnLoad(GameObject.Find("App Voice Experience"));
         
         
 
