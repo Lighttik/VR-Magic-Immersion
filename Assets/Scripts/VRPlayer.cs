@@ -12,6 +12,11 @@ public class VRPlayer : MonoBehaviour
 
     void Start()
     {
+        Restart();
+    }
+
+    public void Restart()
+    {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(currentHealth);
     }

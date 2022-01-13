@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     public GameObject monster;
 
     public int MonstersToSpawnCount;
+    public int MonstersLives;
 
     private MonsterCounter monsterCounter;
 
@@ -43,10 +44,5 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(10);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

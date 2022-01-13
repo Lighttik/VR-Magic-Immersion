@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     private Spawner spawner;
     public List<int> MonstersCountByLevel;
+    public List<int> MonstersLivesByLevel;
 
     private GameObject player;
 
@@ -38,6 +40,14 @@ public class LevelController : MonoBehaviour
         {
             NextLevel();
         }
+    }
+
+    public void RestartGame()
+    {
+        SceneNumber = 1;
+        player.GetComponent<VRPlayer>().Restart();
+        SceneManager.LoadScene(SceneNumber,LoadSceneMode.Single);
+        
     }
 
     public void Quit()
@@ -73,12 +83,15 @@ public class LevelController : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == sceneNumber)
         {
             Debug.Log("Finished loading");
+            
+            // setup spawner properties
             spawner = GameObject.Find("SpawnPoints").GetComponent<Spawner>();
-            spawner.MonstersToSpawnCount = MonstersCountByLevel[0];
+            spawner.MonstersToSpawnCount = MonstersCountByLevel[sceneNumber-1];
+            spawner.MonstersLives = MonstersLivesByLevel[sceneNumber - 1];
             spawner.StartCoroutine("Spawn");
             
-            MonstersCountByLevel.RemoveAt(0);
-
+            
+            // set player to desired position
             player.transform.position = GameObject.Find("PlayerPos").transform.position;
             
             SceneNumber++;
