@@ -20,7 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33aa64c9-50fc-43af-827e-05ebf6a656ea" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Magic Immersion/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magic Immersion/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magic Immersion/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magic Immersion/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LevelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LevelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/EndScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/EndScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/test3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/test3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Switcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Switcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VRPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VRPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skyboxes/Skybox Cubemap Extended/Demo/Materials/Polyverse Skies - Blue Sky green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skyboxes/Skybox Cubemap Extended/Demo/Materials/Polyverse Skies - Blue Sky green.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Water/Plane Meshes/Ocean50x50W750H750.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Water/Plane Meshes/Ocean50x50W750H750.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,12 +53,12 @@
         <option value="$PROJECT_DIR$/Assets/PlayerMagicController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/VoiceRecognition.cs" />
         <option value="$PROJECT_DIR$/Assets/WitActivation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Switcher.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/WitActivation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CollisionController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AgentMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Switcher.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/VRPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/LevelController.cs" />
       </list>
@@ -103,7 +115,7 @@
       <workItem from="1642023149460" duration="1557000" />
       <workItem from="1642038972196" duration="27000" />
       <workItem from="1642039040286" duration="3400000" />
-      <workItem from="1642080014389" duration="3768000" />
+      <workItem from="1642080014389" duration="8339000" />
     </task>
     <servers />
   </component>

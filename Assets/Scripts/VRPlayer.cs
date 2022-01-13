@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,20 +7,65 @@ public class VRPlayer : MonoBehaviour
 {
     private int currentHealth;
     private int killedMonstersCount;
+    private int totalKilledMonstersCount;
     
     public int maxHealth;
     public int monsterDamage;
-    public HealthBar healthBar; 
+    public HealthBar healthBar;
+
+    public Switcher left;
+    public Switcher right;
 
     void Start()
     {
         Restart();
+
+        left = GameObject.Find("SwitcherLeft").GetComponent<Switcher>();
+        right = GameObject.Find("SwitcherRight").GetComponent<Switcher>();
+    }
+
+    private void Update()
+    {
+        //Trigger Down
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger)) FireLeft();
+        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger)) FireRight();
+
+        //Trigger Up
+        if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger)) StopLeft();
+        if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger)) StopRight();
+    }
+
+    void FireLeft()
+    {
+        left.EnableCurrent();
+    }
+    
+    void FireRight()
+    {
+        right.EnableCurrent();
+    }
+
+    void StopLeft()
+    {
+        left.DisableAllSystems();
+    }
+    
+    void StopRight()
+    {
+        right.DisableAllSystems();
     }
 
     public void Restart()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(currentHealth);
+        killedMonstersCount = 0;
+        totalKilledMonstersCount = 0;
+    }
+
+    public void NextLevel()
+    {
+        totalKilledMonstersCount += killedMonstersCount;
         killedMonstersCount = 0;
     }
 
@@ -35,9 +81,14 @@ public class VRPlayer : MonoBehaviour
         return currentHealth <= 0;
     }
 
-    public int monstersKilled()
+    public int monstersKilledInCurrentLevel()
     {
         return killedMonstersCount;
+    }
+
+    public int totalMonstersKilled()
+    {
+        return totalKilledMonstersCount;
     }
 
     public void KilledMonster()

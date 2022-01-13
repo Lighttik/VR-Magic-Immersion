@@ -27,6 +27,8 @@ public class LevelController : MonoBehaviour
     public GameObject totalWinUI;
     
     private int SceneNumber;
+    private bool restart;
+    
     void Start()
     {
         player = GameObject.Find("OVRPlayerController Variant");
@@ -47,7 +49,7 @@ public class LevelController : MonoBehaviour
 
     bool HasPlayerWon()
     {
-        return playerScript.monstersKilled() == MonstersCountByLevel[SceneNumber - 1];
+        return playerScript.monstersKilledInCurrentLevel() == MonstersCountByLevel[SceneNumber - 1];
     }
 
     // Update is called once per frame
@@ -77,15 +79,21 @@ public class LevelController : MonoBehaviour
         {
             NextLevel();
         }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            RestartGame();
+        }
     }
 
     public void RestartGame()
     {
+        restart = true;
+        StopAllCoroutines();
         SceneNumber = 1;
         playerScript.Restart();
         DisableUI();
         SceneManager.LoadScene(sceneNames[SceneNumber],LoadSceneMode.Single);
-        
+        StartCoroutine(waitForSceneLoad(SceneNumber));
     }
 
     private void DisableUI()
@@ -111,6 +119,7 @@ public class LevelController : MonoBehaviour
     {
         SceneNumber++;
         DisableUI();
+        playerScript.NextLevel();
         SceneManager.LoadScene(sceneNames[SceneNumber], LoadSceneMode.Single);
 
         if (SceneNumber == 1) healthCanvas.SetActive(true);
@@ -129,6 +138,8 @@ public class LevelController : MonoBehaviour
         {
             yield return null;
         }
+        
+        if (restart) yield return new WaitForSeconds(1);
  
         // Do anything after proper scene has been loaded
         if (SceneManager.GetActiveScene().name == sceneNames[SceneNumber])
@@ -141,6 +152,8 @@ public class LevelController : MonoBehaviour
                spawner = GameObject.Find("SpawnPoints").GetComponent<Spawner>();
                spawner.MonstersToSpawnCount = MonstersCountByLevel[sceneNumber-1];
                spawner.MonstersLives = MonstersLivesByLevel[sceneNumber - 1];
+               
+               print("Setting spawner " + spawner.MonstersToSpawnCount + " " + spawner.MonstersLives);
                spawner.StartCoroutine("Spawn"); 
             }
             else

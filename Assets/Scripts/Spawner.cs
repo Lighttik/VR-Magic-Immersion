@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
@@ -25,9 +27,12 @@ public class Spawner : MonoBehaviour
 
     IEnumerator Spawn()
     {
+        print("spawning " + MonstersToSpawnCount);
         for (int i = 0; i < MonstersToSpawnCount; i++)
         {
+            print("halo");
             yield return new WaitForSeconds(5);
+            print("halo");
 
             GameObject spawnpoint = spawnpoints[Random.Range(0, spawnpoints.Count)];
             GameObject obj = Instantiate(monster,spawnpoint.transform);
@@ -46,5 +51,9 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(10);
         }
     }
-    
+
+    private void OnDestroy()
+    {
+        print("Destroyed?");
+    }
 }
