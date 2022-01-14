@@ -4757,7 +4757,7 @@ PrefabInstance:
     - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
       propertyPath: MonstersSpeedByLevel.Array.data[2]
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
