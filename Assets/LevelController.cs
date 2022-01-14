@@ -91,21 +91,22 @@ public class LevelController : MonoBehaviour
                 {
                     Debug.Log("player dead");
                     StartCoroutine("ShowUI", lostUI);
-                    UiShown = !UiShown;
+                    UiShown = true;
                 }
 
                 else if (HasPlayerWon())
                 {
                     Debug.Log("player win");
                     StartCoroutine("ShowUI", winUI);
-                    UiShown = !UiShown;
+                    UiShown = true;
                 }
             }
         }
 
         if (SceneNumber == 4 && playerScript.IsDead()) 
         {
-            lastLossUI.SetActive(true);
+            StartCoroutine("ShowUI", lastLossUI);
+            UiShown = true;
         }
         
         if (Input.GetKeyDown(KeyCode.F))
@@ -164,17 +165,20 @@ public class LevelController : MonoBehaviour
 
     private void PrepareScoreScene()
     {
+        staticCanvas.SetActive(true);
+        totalWinUI.SetActive(true);
         healthCanvas.SetActive(false);
+        
         int userScore = ComputeUserScore();
         
-        totalWinUI.SetActive(true);
         scoreUI.text = userScore.ToString();
+        Debug.Log("user score" + userScore);
 
     }
 
     private int ComputeUserScore()
     {
-        int healthAtLevel4 = playerScript.GetHealthAtLevel(4);
+        int healthAtLevel4 = playerScript.GetHealthAtLevel(3);
         int totalMonstersKilled = playerScript.TotalMonstersKilled();
 
         return healthAtLevel4 * totalMonstersKilled;
@@ -223,13 +227,8 @@ public class LevelController : MonoBehaviour
                print("Disabling UI");
                DisableUI();
             }
-            else
-            {
-                staticCanvas.SetActive(true);
-                totalWinUI.SetActive(true);
-            }
-            
-            
+
+
             // set player to desired position
             player.transform.position = GameObject.Find("PlayerPos").transform.position;
             
