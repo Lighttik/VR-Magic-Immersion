@@ -1700,6 +1700,11 @@ PrefabInstance:
       propertyPath: iconSwitcher
       value: 
       objectReference: {fileID: 1004674669}
+    - target: {fileID: 4835942717672729489, guid: b26300ddb869c614d8367fe361d8f395,
+        type: 3}
+      propertyPath: monsterDamage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4835942718795357624, guid: b26300ddb869c614d8367fe361d8f395,
         type: 3}
       propertyPath: m_IsActive
@@ -4691,8 +4696,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
+      propertyPath: MonstersSpeedByLevel.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
       propertyPath: staticCanvasChildren.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
+      propertyPath: MonsterSpawnTimeByLevel.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
@@ -4707,7 +4722,7 @@ PrefabInstance:
     - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
       propertyPath: MonstersCountByLevel.Array.data[3]
-      value: 15
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
@@ -4731,6 +4746,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
+      propertyPath: MonstersSpeedByLevel.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
+      propertyPath: MonstersSpeedByLevel.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
+      propertyPath: MonstersSpeedByLevel.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
+      propertyPath: MonstersSpeedByLevel.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
       propertyPath: staticCanvasChildren.Array.data[0]
       value: 
       objectReference: {fileID: 1895006426}
@@ -4744,6 +4779,26 @@ PrefabInstance:
       propertyPath: staticCanvasChildren.Array.data[2]
       value: 
       objectReference: {fileID: 915522982}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
+      propertyPath: MonsterSpawnTimeByLevel.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
+      propertyPath: MonsterSpawnTimeByLevel.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
+      propertyPath: MonsterSpawnTimeByLevel.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
+      propertyPath: MonsterSpawnTimeByLevel.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1804090907402728344, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
       propertyPath: m_Name
@@ -5369,7 +5424,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 203
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 9.272614
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -5452,13 +5507,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992082270}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.584394, y: -0.9857842, z: 27.494663}
+  m_LocalRotation: {x: -0, y: 0.0067931246, z: -0, w: 0.999977}
+  m_LocalPosition: {x: 11.69, y: -0.9857842, z: 16.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0.778, z: 0}
 --- !u!1001 &2125641371
 PrefabInstance:
   m_ObjectHideFlags: 0

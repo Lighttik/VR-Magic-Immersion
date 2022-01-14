@@ -10,14 +10,12 @@ using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private Spawner spawner;
+    
     public List<int> MonstersCountByLevel;
     public List<int> MonstersLivesByLevel;
+    public List<int> MonstersSpeedByLevel;
+    public List<int> MonsterSpawnTimeByLevel;
     public List<string> sceneNames;
-
-    private GameObject player;
-    private VRPlayer playerScript;
 
     public GameObject healthCanvas;
     public GameObject winUI;
@@ -28,11 +26,18 @@ public class LevelController : MonoBehaviour
     public GameObject totalWinUI;
     public Text scoreUI;
     
+    
+    private GameObject player;
+    private VRPlayer playerScript;
+    
     private int SceneNumber;
     private bool restart;
-
     private bool UiShown;
+    
+    private Spawner spawner;
+    
 
+    // Particle objects
     public GameObject spawnParticle;
     private MeshRenderer meshParticle;
     private ParticleSystem psParticle;
@@ -56,7 +61,6 @@ public class LevelController : MonoBehaviour
 
         SceneNumber = 0;
 
-        //NextLevel();
     }
 
     void StartPort()
@@ -80,7 +84,7 @@ public class LevelController : MonoBehaviour
         return playerScript.MonstersKilledInCurrentLevel() == MonstersCountByLevel[SceneNumber - 1];
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (SceneNumber > 0 && SceneNumber < 4)
@@ -183,6 +187,16 @@ public class LevelController : MonoBehaviour
 
         return healthAtLevel4 * totalMonstersKilled;
     }
+
+    private void SetUpSpawner(int sceneNumber)
+    {
+        // setup spawner properties
+        spawner = GameObject.Find("SpawnPoints").GetComponent<Spawner>();
+        spawner.MonstersToSpawnCount = MonstersCountByLevel[sceneNumber-1];
+        spawner.MonstersLives = MonstersLivesByLevel[sceneNumber - 1];
+        spawner.MonsterSpeed = MonstersSpeedByLevel[sceneNumber - 1];
+        spawner.SpawnTime = MonsterSpawnTimeByLevel[sceneNumber - 1];
+    }
     
     
     IEnumerator waitForSceneLoad(int sceneNumber)
@@ -217,15 +231,10 @@ public class LevelController : MonoBehaviour
 
             if (sceneNumber < 5)
             {
-                // setup spawner properties
-               spawner = GameObject.Find("SpawnPoints").GetComponent<Spawner>();
-               spawner.MonstersToSpawnCount = MonstersCountByLevel[sceneNumber-1];
-               spawner.MonstersLives = MonstersLivesByLevel[sceneNumber - 1];
+                SetUpSpawner(sceneNumber);
+
+                spawner.StartCoroutine("Spawn"); 
                
-               print("Setting spawner " + spawner.MonstersToSpawnCount + " " + spawner.MonstersLives);
-               spawner.StartCoroutine("Spawn"); 
-               print("Disabling UI");
-               DisableUI();
             }
 
 

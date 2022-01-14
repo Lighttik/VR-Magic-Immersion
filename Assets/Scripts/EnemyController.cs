@@ -56,13 +56,7 @@ public class EnemyController : MonoBehaviour
 
     public void IsHit()
     {
-        State previousState = state;
-        state = (State) Random.Range(0, 3);
-
-        while (previousState == state)
-        {
-            state = (State) Random.Range(0, 3);
-        }
+        state = NewState(state);
         lives -= 1;
         if (lives < 1)
         {
@@ -71,9 +65,21 @@ public class EnemyController : MonoBehaviour
         else
         {
             animator.SetTrigger("hit");
-            hurtSound.PlayDelayed(0.5f);
+            hurtSound.PlayDelayed(0.1f);
             SetUpEnemy();
         }
+    }
+
+    private State NewState(State previousState)
+    {
+        State state0 = (State) Random.Range(0, 3);
+
+        while (previousState == state0)
+        {
+            state0 = (State) Random.Range(0, 3);
+        }
+
+        return state0;
     }
 
     void Die()

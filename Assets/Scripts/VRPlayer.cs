@@ -14,8 +14,8 @@ public class VRPlayer : MonoBehaviour
     public int monsterDamage;
     public HealthBar healthBar;
 
-    public Switcher left;
-    public Switcher right;
+    private Switcher left;
+    private Switcher right;
     public IconSwitcher iconSwitcher;
 
     void Start()
