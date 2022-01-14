@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 142347170c1ad4a4da9121b2397e9085, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: cc421da483ed06c49933077a621bff25, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1805642785}
-  m_IndirectSpecularColor: {r: 0.3356359, g: 0.18842825, b: 0.51697785, a: 1}
+  m_IndirectSpecularColor: {r: 0.029113479, g: 0.012896461, b: 0.04726901, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -402,6 +402,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ocean
       objectReference: {fileID: 0}
+    - target: {fileID: 4385955011436398758, guid: 376fef6e7a36b9f4285217fba4088239,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21f282b4ce819ca4d8e666f4ac7eaf16, type: 2}
     - target: {fileID: 4385955011436398760, guid: 376fef6e7a36b9f4285217fba4088239,
         type: 3}
       propertyPath: m_RootOrder
@@ -1041,6 +1046,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2804256315629280621, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804256315629280621, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804256315629280621, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6428205353832845269, guid: 108609ac100a2684eb0b45d6f952354d,
         type: 3}
       propertyPath: m_Name
@@ -1049,12 +1069,27 @@ PrefabInstance:
     - target: {fileID: 6561967268786282657, guid: 108609ac100a2684eb0b45d6f952354d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561967268786282657, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1348
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561967268786282657, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1348
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561967268786282657, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1348
       objectReference: {fileID: 0}
     - target: {fileID: 6561967268786282657, guid: 108609ac100a2684eb0b45d6f952354d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2792817
+      value: 1.2792819
       objectReference: {fileID: 0}
     - target: {fileID: 6561967268786282657, guid: 108609ac100a2684eb0b45d6f952354d,
         type: 3}
@@ -1079,12 +1114,12 @@ PrefabInstance:
     - target: {fileID: 6561967268786282657, guid: 108609ac100a2684eb0b45d6f952354d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6561967268786282657, guid: 108609ac100a2684eb0b45d6f952354d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6561967268786282657, guid: 108609ac100a2684eb0b45d6f952354d,
         type: 3}
@@ -1121,8 +1156,68 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.minScalar
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6790405378556472594, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.b
+      value: 0.93361855
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790405378556472594, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790405378556472594, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790405378556472594, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.minColor.b
+      value: 0.107547104
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790405378556472594, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.minColor.g
+      value: 0.92920303
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790405378556472594, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.minColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790405378556472594, guid: 108609ac100a2684eb0b45d6f952354d,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.minMaxState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 108609ac100a2684eb0b45d6f952354d, type: 3}
+--- !u!1 &963043194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6428205353832845269, guid: 108609ac100a2684eb0b45d6f952354d,
+    type: 3}
+  m_PrefabInstance: {fileID: 963043193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &963043195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963043194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce27c184242b5154698207f1f0c5c27d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: b2551ba24fd05c54eaf9c8c96e85755f, type: 3}
+  - {fileID: 8300000, guid: a3b8a841734de9449a49d4c149a8172b, type: 3}
+  - {fileID: 8300000, guid: 8475601b037686544959722eba90d7b9, type: 3}
+  - {fileID: 8300000, guid: d5345bba00bf82e47aa803c8167d5106, type: 3}
+  - {fileID: 8300000, guid: b837a280846a08d4ea9c083c4c713970, type: 3}
+  - {fileID: 8300000, guid: 858643e617f27604da4601a1bb0d2102, type: 3}
 --- !u!1 &997034825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,7 +2389,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2125641371
 PrefabInstance:
