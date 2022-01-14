@@ -1212,6 +1212,7 @@
             </e>
           </e>
         </e>
+        <e p="SoundSystem.cs" t="Include" />
         <e p="Water" t="Include">
           <e p="LowPoly Island" t="Include">
             <e p="Credits.txt" t="Include" />

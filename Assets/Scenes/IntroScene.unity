@@ -1730,6 +1730,36 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6954601827543787177, guid: b26300ddb869c614d8367fe361d8f395,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954862698466481055, guid: b26300ddb869c614d8367fe361d8f395,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955219594261102741, guid: b26300ddb869c614d8367fe361d8f395,
+        type: 3}
+      propertyPath: UVModule.flipU
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955219594261102741, guid: b26300ddb869c614d8367fe361d8f395,
+        type: 3}
+      propertyPath: UVModule.flipV
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066992092610404489, guid: b26300ddb869c614d8367fe361d8f395,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192546781968016031, guid: b26300ddb869c614d8367fe361d8f395,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7707142463364898678, guid: b26300ddb869c614d8367fe361d8f395,
         type: 3}
       propertyPath: m_Name
@@ -2847,6 +2877,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4956255927207046, guid: c04be9f92ebf58b46b2204ac3aaa8785,
     type: 3}
   m_PrefabInstance: {fileID: 1178088207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1212638344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7079942884570898551, guid: b26300ddb869c614d8367fe361d8f395,
+    type: 3}
+  m_PrefabInstance: {fileID: 742474205}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1290550708
 PrefabInstance:
@@ -4583,6 +4619,11 @@ PrefabInstance:
       propertyPath: staticCanvas
       value: 
       objectReference: {fileID: 1620694042}
+    - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
+        type: 3}
+      propertyPath: spawnParticle
+      value: 
+      objectReference: {fileID: 1212638344}
     - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
       propertyPath: levels.Array.size

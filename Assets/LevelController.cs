@@ -33,6 +33,10 @@ public class LevelController : MonoBehaviour
 
     private bool UiShown;
 
+    public GameObject spawnParticle;
+    private MeshRenderer meshParticle;
+    private ParticleSystem psParticle;
+
     void Start()
     {
         player = GameObject.Find("OVRPlayerController Variant");
@@ -44,11 +48,31 @@ public class LevelController : MonoBehaviour
         DontDestroyOnLoad(GameObject.Find("App Voice Experience"));
         DontDestroyOnLoad(GameObject.Find("StaticCanvas"));
 
+        meshParticle = spawnParticle.GetComponent<MeshRenderer>();
+        meshParticle.enabled = false;
+        psParticle = spawnParticle.GetComponentInChildren<ParticleSystem>();
+
         UiShown = false;
 
         SceneNumber = 0;
 
         //NextLevel();
+    }
+
+    void StartPort()
+    {
+        meshParticle.enabled = true;
+        psParticle.Play();
+    }
+
+    bool FinishedPort()
+    {
+        if (!psParticle.isPlaying)
+        {
+            meshParticle.enabled = false;
+            return true;
+        }
+        return false;
     }
 
     bool HasPlayerWon()
@@ -102,12 +126,11 @@ public class LevelController : MonoBehaviour
 
     public void RestartGame()
     {
+        StartPort();
         restart = true;
         StopAllCoroutines();
         SceneNumber = 1;
         playerScript.Restart();
-        DisableUI();
-        SceneManager.LoadScene(sceneNames[SceneNumber],LoadSceneMode.Single);
         StartCoroutine(waitForSceneLoad(SceneNumber));
     }
 
@@ -132,21 +155,10 @@ public class LevelController : MonoBehaviour
 
     public void NextLevel()
     {
+        StartPort();
         SceneNumber++;
-        DisableUI();
-        playerScript.NextLevel();
-        SceneManager.LoadScene(sceneNames[SceneNumber], LoadSceneMode.Single);
+        StartCoroutine(waitForSceneLoad(SceneNumber));
 
-        if (SceneNumber == 1) healthCanvas.SetActive(true);
-        if (SceneNumber == 5)
-        {
-            PrepareScoreScene();
-        }
-
-        if (SceneManager.GetActiveScene().name != sceneNames[SceneNumber])
-        {
-            StartCoroutine(waitForSceneLoad(SceneNumber));
-        }
         UiShown = false;
     }
 
@@ -171,6 +183,13 @@ public class LevelController : MonoBehaviour
     
     IEnumerator waitForSceneLoad(int sceneNumber)
     {
+        while (!FinishedPort())
+        {
+            yield return null;
+        }
+
+        SceneManager.LoadScene(sceneNames[SceneNumber],LoadSceneMode.Single);
+        
         while (SceneManager.GetActiveScene().name != sceneNames[SceneNumber])
         {
             yield return null;
@@ -182,10 +201,19 @@ public class LevelController : MonoBehaviour
         if (SceneManager.GetActiveScene().name == sceneNames[SceneNumber])
         {
             Debug.Log("Finished loading");
+            
+            DisableUI();
+            playerScript.NextLevel();
+
+            if (SceneNumber == 1) healthCanvas.SetActive(true);
+            if (SceneNumber == 5)
+            {
+                PrepareScoreScene();
+            }
 
             if (sceneNumber < 5)
             {
-               // setup spawner properties
+                // setup spawner properties
                spawner = GameObject.Find("SpawnPoints").GetComponent<Spawner>();
                spawner.MonstersToSpawnCount = MonstersCountByLevel[sceneNumber-1];
                spawner.MonstersLives = MonstersLivesByLevel[sceneNumber - 1];
