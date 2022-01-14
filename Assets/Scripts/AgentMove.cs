@@ -48,21 +48,29 @@ public class AgentMove : MonoBehaviour
         }
         else if (other.CompareTag("PlayerPos"))
         {
-            animator.SetInteger("StayAnimation",Random.Range(1,3));
             StartCoroutine("StayInPlace");
         }
     }
+
+    string RandomAttack()
+    {
+        if (Random.Range(0f, 1f) < 0.5)
+        {
+            return "attack2";
+        }
+
+        return "attack1";
+    }
+    
+    
 
     IEnumerator StayInPlace()
     {
         for (;;)
         {
-            animator.SetInteger("StayAnimation",Random.Range(1,3));
-            yield return new WaitForSeconds(1);
-            behaviourController.AttackPlayer();
-            print("attaaaack");
+            animator.SetTrigger(RandomAttack());
             yield return new WaitForSeconds(2);
-            animator.SetInteger("StayAnimation",0);
+            behaviourController.AttackPlayer();
             yield return new WaitForSeconds(5);
         }
     }
@@ -82,7 +90,7 @@ public class AgentMove : MonoBehaviour
         
         else if (agent.hasPath)
         {
-            DrawPath();
+            //DrawPath();
         }
     }
 

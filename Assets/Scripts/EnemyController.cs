@@ -64,8 +64,9 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            ResetAttackAnimation();
             animator.SetTrigger("hit");
-            hurtSound.PlayDelayed(0.1f);
+            hurtSound.PlayDelayed(0.5f);
             SetUpEnemy();
         }
     }
@@ -80,6 +81,12 @@ public class EnemyController : MonoBehaviour
         }
 
         return state0;
+    }
+
+    void ResetAttackAnimation()
+    {
+        animator.ResetTrigger("attack1");
+        animator.ResetTrigger("attack2");
     }
 
     void Die()
@@ -118,6 +125,6 @@ public class EnemyController : MonoBehaviour
     void StopAnimations()
     {
         agentMoveScript.StopCoroutine("StayInPlace");
-        animator.SetInteger("StayAnimation",0);
+        ResetAttackAnimation();
     }
 }
