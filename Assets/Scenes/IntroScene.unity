@@ -1600,6 +1600,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4745963249994534625, guid: b26300ddb869c614d8367fe361d8f395,
+        type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 4745963250731715871, guid: b26300ddb869c614d8367fe361d8f395,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -1744,6 +1749,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955219594261102741, guid: b26300ddb869c614d8367fe361d8f395,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955219594261102741, guid: b26300ddb869c614d8367fe361d8f395,
         type: 3}
