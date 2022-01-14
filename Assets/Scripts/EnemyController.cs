@@ -70,7 +70,8 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            hurtSound.Play(0);
+            animator.SetTrigger("hit");
+            hurtSound.PlayDelayed(0.5f);
             SetUpEnemy();
         }
     }
