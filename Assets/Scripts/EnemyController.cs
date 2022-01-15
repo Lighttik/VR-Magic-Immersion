@@ -33,13 +33,14 @@ public class EnemyController : MonoBehaviour
         agentMoveScript = gameObject.GetComponent<AgentMove>();
         
         state = (State) Random.Range(0, 3);
-        SetUpEnemy();
+        StartCoroutine("SetUpEnemy");
         
         print("BEHOLDER POS " + transform.position + " " + Camera.main.WorldToScreenPoint(transform.position));
     }
 
-    void SetUpEnemy()
+    IEnumerator SetUpEnemy()
     {
+        yield return new WaitForSeconds(0.5f);
         ChangeColor();
         ChangeLayer();
     }
@@ -67,7 +68,7 @@ public class EnemyController : MonoBehaviour
             ResetAttackAnimation();
             animator.SetTrigger("hit");
             hurtSound.PlayDelayed(0.5f);
-            SetUpEnemy();
+            StartCoroutine("SetUpEnemy");
         }
     }
 

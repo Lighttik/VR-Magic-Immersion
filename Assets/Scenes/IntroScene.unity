@@ -4802,12 +4802,12 @@ PrefabInstance:
     - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
       propertyPath: MonsterSpawnTimeByLevel.Array.data[2]
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 736676597105703862, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
       propertyPath: MonsterSpawnTimeByLevel.Array.data[3]
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1804090907402728344, guid: d30796faf1848c64fb9328ad047a5fa7,
         type: 3}
